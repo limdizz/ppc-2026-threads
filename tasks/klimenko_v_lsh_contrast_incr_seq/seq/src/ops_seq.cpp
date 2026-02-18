@@ -1,10 +1,10 @@
 #include "klimenko_v_lsh_contrast_incr_seq/seq/include/ops_seq.hpp"
 
-#include <numeric>
+#include <algorithm>
+#include <cstddef>
 #include <vector>
 
 #include "klimenko_v_lsh_contrast_incr_seq/common/include/common.hpp"
-#include "util/include/util.hpp"
 
 namespace klimenko_v_lsh_contrast_incr_seq {
 
@@ -30,9 +30,9 @@ bool KlimenkoVLSHContrastIncrSEQ::RunImpl() {
     return false;
   }
 
-  auto minmax = std::minmax_element(input.begin(), input.end());
-  int min_val = *minmax.first;
-  int max_val = *minmax.second;
+  auto minmax = std::ranges::minmax_element(input);
+  int min_val = *minmax.min;
+  int max_val = *minmax.max;
 
   if (max_val == min_val) {
     output = input;

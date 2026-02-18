@@ -3,14 +3,8 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
-#include <cstdint>
-#include <numeric>
-#include <random>
-#include <stdexcept>
 #include <string>
-#include <tuple>
 #include <utility>
-#include <vector>
 
 #include "klimenko_v_lsh_contrast_incr_seq/common/include/common.hpp"
 #include "klimenko_v_lsh_contrast_incr_seq/seq/include/ops_seq.hpp"
@@ -31,7 +25,7 @@ class KlimenkoVRunFuncTestsLSH : public ppc::util::BaseRunFuncTests<InType, OutT
 
     input_data_.resize(size);
     for (int i = 0; i < size; ++i) {
-      input_data_[i] = static_cast<int>(50 + (i % 101));
+      input_data_[i] = 50 + (i % 101);
     }
   }
 

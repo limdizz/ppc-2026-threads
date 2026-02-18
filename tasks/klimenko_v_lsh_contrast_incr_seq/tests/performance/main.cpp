@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include <cstddef>
 #include <random>
 
 #include "klimenko_v_lsh_contrast_incr_seq/common/include/common.hpp"
@@ -14,7 +15,8 @@ class KlimenkoVLSHContrastIncrSEQPerfTests : public ppc::util::BaseRunPerfTests<
     const size_t size = 10000000;
     input_data_.resize(size);
 
-    std::mt19937 gen(42);
+    std::random_device rd;
+    std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dist(0, 255);
     for (auto &pixel : input_data_) {
       pixel = dist(gen);
